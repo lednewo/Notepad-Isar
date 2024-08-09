@@ -3,19 +3,18 @@ import 'package:isar/isar.dart';
 import 'package:notepad_with_isar/models/note.dart';
 import 'package:path_provider/path_provider.dart';
 
-class NoteDatabase extends ChangeNotifier{
+class NoteDatabase extends ChangeNotifier {
   static late Isar isar;
 
   // I N I C I A L I Z A R
   static Future<void> inicializar() async {
     final dir = await getApplicationCacheDirectory();
-    isar = await Isar.open(
-      [NoteSchema], 
-      directory: dir.path);
+    isar = await Isar.open([NoteSchema], directory: dir.path);
   }
 
   // lista de notes
   final List<Note> currentNotes = [];
+  bool isThema = true;
 
   // C R I A R
   Future<void> addNote(String textFromUser) async {
@@ -52,4 +51,6 @@ class NoteDatabase extends ChangeNotifier{
     await isar.writeTxn(() => isar.notes.delete(id));
     await fetchNotes();
   }
- }
+
+  // T E M A
+}

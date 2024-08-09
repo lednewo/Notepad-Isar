@@ -20,8 +20,6 @@ class _NotePageState extends State<NotesPage> {
   @override
   void initState() {
     super.initState();
-
-    readNotes();
   }
 
   // read notes
@@ -35,7 +33,6 @@ class _NotePageState extends State<NotesPage> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        
         backgroundColor: Theme.of(context).colorScheme.surface,
         title: const Text('Atualizar Nota'),
         content: TextField(
@@ -117,7 +114,7 @@ class _NotePageState extends State<NotesPage> {
               Padding(
                 padding: const EdgeInsets.only(left: 25),
                 child: Text(
-                  "Notes",
+                  "Embarques",
                   style: GoogleFonts.dmSerifText(
                       fontSize: 48,
                       color: Theme.of(context).colorScheme.inversePrimary),
@@ -158,6 +155,7 @@ class _NotePageState extends State<NotesPage> {
                 children: [
                   Expanded(
                     child: TextFormField(
+                      cursorColor: Theme.of(context).colorScheme.inversePrimary,
                       controller: textController,
                       decoration: InputDecoration(
                         hintText: 'Digite uma nota',
